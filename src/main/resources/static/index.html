@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="GET" action="/carts" data-th-object="User">
+        <table>
+            <tr>
+                <td>User ID:</td>
+            </tr>
+            <tr>
+                <!-- why do you need both name and data-th-field? -->
+                <!-- name is Required for Form Submission: Without the name attribute, the value of the 
+                  input field will not be included in the HTTP request when the form is submitted. 
+                  This would prevent Spring from binding the uid value to your controller method parameter.
+
+                data-th-field is Used by Thymeleaf for Model Binding: When rendering the form, 
+                the data-th-field attribute ensures that the input field is populated with the current 
+                value of the uid property from the model. If you're using Thymeleaf to generate the form 
+                dynamically, this binding is necessary to display the correct data in the input field. -->
+                <td><input type="text" name="uid" data-th-field="uid"></td>
+            </tr>
+            <tr>
+                <td><button type="submit">Go!</button></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

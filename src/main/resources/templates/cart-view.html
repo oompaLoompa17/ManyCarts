@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>User <span th:text="${uid}"></span>'s Cart ID: <span th:text="${id}"></span></h1>
+
+    <ul>
+        <li th:each="item : ${items}">
+            <span th:text="${item.name}"></span>
+            <span th:text="' - Quantity: ' + ${item.quantity}"></span>
+        </li>
+    </ul>
+
+    <form method="POST" action="/cart/${id}" th:object="${item}">
+        <table>
+            <tr>
+                <td>Item:</td>
+                <td><input type="text" name="name" th:field="*{name}" required></td>
+            </tr>
+            <tr>
+                <td>Quantity:</td>
+                <td><input type="text" name="quantity" th:field="*{quantity}" min="1" required></td>
+            </tr>
+            <tr>
+                <button type="submit" action="/cart/${id}">Add Item</button>
+            </tr>
+            <tr>
+                <button type="submit" action="/carts">Save Cart</button>
+            </tr>
+        </table>
+    </form>
+
+    
+</body>
+</html>

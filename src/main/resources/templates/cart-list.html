@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>User <span th-text="${uid}"></span>'s current list of carts:</h1>
+
+    <ul>
+        <li th:each="cart : ${carts}">
+            <a th:href="@{'/cart/' + ${cart.id}}" th:text="'Cart ID: ' + ${cart.id}"></a>
+            <span th:text="' - Items: ' + ${cart.count}"></span>
+        </li>
+    </ul>
+
+    <form method="GET" action="/cart/new">
+        <button type="submit">New Cart</button>
+    </form>
+</body>
+</html>
